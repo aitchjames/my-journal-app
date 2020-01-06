@@ -16,7 +16,10 @@ app.use(sessionOptions);
 app.use(flash());
 
 app.use(function(req, res, next) {
-    res.locals.user = req.session.user
+    // Make current user id available on req object
+    if (req.session.user) {req.visitorId = req.session.user._id} else {req.visitorId = 0}
+    // Make user session data available within view templates
+    res.locals.user = req.session.user;
     next()
 })
 
