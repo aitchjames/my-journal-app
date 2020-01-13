@@ -1,10 +1,24 @@
-body, .tooltip
- {
+body {
+    background-color: #faf8f5;
+    font-family: 'Merriweather', serif;
+}
+
+.tooltip {
   font-family: 'Merriweather', serif;
 }
 
+.btn-primary, .btn-success {
+    background-color: #ea6b4f;
+    border-color: #ea6b4f;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    background-color: #dd5436;
+    border-color: #dd5436;
+}
+
 .header-bar {
-  background-color: #292929;
+    background-color: #615779; 
 }
 
 .container--narrow {
