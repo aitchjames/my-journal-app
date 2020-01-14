@@ -25,7 +25,7 @@ export default class Search {
             this.openOverlay()
         })
     }
-    //live-search-results--visible
+    
     // Methods
     keyPressHandler() {
         let value = this.inputField.value;

@@ -1,6 +1,7 @@
 import DOMPurify from 'dompurify';
 
 export default class Chat {
+    // Selecting DOM elements in constructor and keep track of useful data
     constructor() {
         this.openedYet = false;
         this.chatWrapper = document.querySelector("#chat-wrapper");

@@ -12,9 +12,27 @@ body {
     border-color: #ea6b4f;
 }
 
-.btn-primary:hover, .btn-success:hover {
+.btn-primary:hover, .btn-success:hover, 
+.btn-primary:focus, .btn-success:focus, 
+.btn-primary:active, .btn-success:active   {
     background-color: #dd5436;
     border-color: #dd5436;
+    
+}
+
+.btn-primary:focus, .btn-success:focus {
+    box-shadow: 0 0 0 .2rem rgba(221,84,54,.5);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, 
+.btn-success:not(:disabled):not(.disabled):active {
+    background-color: #dd5436;
+    border-color: #dd5436;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-success:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 .2rem rgba(221,84,54,.5);
 }
 
 .header-bar {
