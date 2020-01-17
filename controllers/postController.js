@@ -5,13 +5,22 @@ exports.viewCreateScreen = function(req, res) {
 }
 
 exports.create = function(req, res) {
-    let post = new Post(req.body, req.session.user._id)
+    let post = new Post(req.body, req.session.user._id);
     post.create().then(function(newId) {
         req.flash("success", "New post successfully created.");
         req.session.save(() => res.redirect(`/post/${newId}`));
     }).catch(function(errors) {
         errors.forEach(error => req.flash("errors", error));
         req.session.save(() => res.redirect("/create-post"));
+    })
+}
+
+exports.apiCreate = function(req, res) {
+    let post = new Post(req.body, req.apiUser._id);
+    post.create().then(function(newId) {
+        res.json("Congrats")
+    }).catch(function(errors) {
+        res.json(errors)
     })
 }
 
@@ -73,6 +82,14 @@ exports.delete = function(req, res) {
         // A post with requested id doesn't exist or not owner
         req.flash("errors", "You do not have permission to perform that action.");
         req.session.save(() => res.redirect("/"));
+    })
+}
+
+exports.apiDelete = function(req, res) {
+    Post.delete(req.params.id, req.apiUser._id).then(() => {
+        res.json("Success")
+    }).catch(() => {
+        res.json("You do not have permission to perform that action.")
     })
 }
 

@@ -7,6 +7,12 @@ const sanitizeHTML = require("sanitize-html");
 const csrf = require("csurf");
 const app = express();
 
+// Allow express to recieve form data and json data
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+app.use('/api', require('./router-api'));
+
 let sessionOptions = session({
     secret: "Javascript is Awesome",
     store: new MongoStore({client: require('./db')}),
@@ -34,10 +40,6 @@ app.use(function(req, res, next) {
 })
 
 const router = require('./router');
-
-// Allow express to recieve form data and json data
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
 
 // Allow express to use ejs templating engine for the views
 app.use(express.static('public'));
