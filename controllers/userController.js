@@ -13,12 +13,12 @@ exports.apiGetPostsByUsername = async function(req, res) {
     }
 }
 
-exports.apiMustLoggedIn = function(req, res, next) {
+exports.apiMustBeLoggedIn = function(req, res, next) {
     try {
-        req.apiUser = jwt.verify(req.body.token, process.env.JWTSECRET);
-        next();
+        req.apiUser = jwt.verify(req.body.token, process.env.JWTSECRET)
+        next()
     } catch {
-        res.json("Sorry, you must provide a valid token");
+        res.json("Sorry, you must provide a valid token.")
     }
 }
 
